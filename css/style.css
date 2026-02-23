@@ -710,6 +710,63 @@ h3 {
   background: #fff !important;
 }
 
+/* =========================
+/* LOGO — ALL SCREEN SIZES */
+.logo-dual {
+  display: inline-flex;
+  align-items: center;
+    gap: 15px;
+}
+
+/* IMPORTANT: prevent stretching */
+.nav-logo,
+.vtc-logo {
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* DESKTOP */
+.nav-logo {
+  height: 40px;
+  margin-right: 20px;
+}
+
+.vtc-logo {
+  height: 50px;
+}
+
+/* TABLET */
+@media (max-width: 991px) {
+
+  .logo-dual {
+    gap: 6px;
+  }
+  .nav-logo {
+    height: 34px;
+    margin-right: 8px;
+  }
+
+  .vtc-logo {
+    height: 44px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+
+  .logo-dual {
+    gap: 1px;
+  }
+  .nav-logo {
+    height: 30px;
+    margin-right: 6px;
+  }
+
+  .vtc-logo {
+    height: 38px;
+  }
+}
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_header.scss */
 .header-area {
   left: 0;
@@ -783,7 +840,7 @@ h3 {
 
 /* line 40, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu {
-  text-align: center;
+  text-align: right;
 }
 
 /* line 43, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_header.scss */
@@ -1032,7 +1089,7 @@ h3 {
 /* line 7, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_slider.scss */
 .slider_area {
   padding: 0 50px;
-  background: #000;
+  background: #fffdfd;
 }
 
 @media (max-width: 767px) {
@@ -1650,6 +1707,60 @@ h3 {
 .about_area .single_about_info:hover .image_hover {
   opacity: 1;
   visibility: visible;
+}
+/* CENTER LOGO ABOVE FOOTER COLUMNS */
+.footer-logo-center {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+/* DUAL LOGO */
+.footer-logo-dual {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Prevent stretching */
+.footer-logo-dual img {
+  width: auto;
+  object-fit: contain;
+}
+
+/* Desktop */
+.footer-logo-dual .nav-logo {
+  height: 36px;
+}
+
+.footer-logo-dual .vtc-logo {
+  height: 50px;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .footer-logo-dual {
+    gap: 6px;
+  }
+  .footer-logo-dual .nav-logo {
+    height: 32px;
+  }
+  .footer-logo-dual .vtc-logo {
+    height: 44px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .footer-logo-dual {
+    gap: 4px;
+  }
+  .footer-logo-dual .nav-logo {
+    height: 28px;
+  }
+  .footer-logo-dual .vtc-logo {
+    height: 38px;
+  }
 }
 
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_footer.scss */
@@ -5479,3 +5590,24 @@ h6 {
 .btn-submit:hover {
   background: #444;
 }
+
+
+.bullet-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.bullet-list li::before {
+  content: "●";          /* FILLED circle */
+  position: absolute;
+  left: 0;
+  color: black;
+  font-size: 10px;
+  top: 6px;
+}
+
