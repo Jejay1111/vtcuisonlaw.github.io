@@ -88,36 +88,45 @@
 </header>
     <!-- header-end -->
 
-    <!-- slider_area_start -->
-    <div class="slider_area mt-3">
-        <div class="slider_area_inner slider_bg_1 d-flex align-items-center" >
-            
-        </div>
-    </div>
-    <!-- slider_area_end -->
+<!-- Google Font (elegant semi-cursive) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
 
-     <br> 
-   <div class="container mt-5">
+<!-- slider_area_start -->
+<div class="slider_area mt-1">
+    <div class="slider_area_inner d-flex justify-content-center align-items-center">
+        <!-- Top banner image displayed at actual size -->
+        <img src="img/banner/Welcome_To_US.png" alt="Top Banner"
+             style="max-width:100%; height:auto; display:block;">
+    </div>
+</div>
+<!-- slider_area_end -->
+
+
+
+<div class="container ">
+
+  <!-- HEADER -->
   <div class="text-center text-dark">
 
-    <!-- TITLE -->
     <h2 class="display-4 font-weight-bold mb-4" style="color:#000;">
       Immigration Attorney
     </h2>
 
-    <!-- IMAGE -->
-    <div class="d-flex justify-content-center mb-4">
-      <div class="slider_area_inner slider_bg_3"
-           style="width:1500px; height:400px; background-size:cover; background-position:center; ">
-      </div>
+    <!-- Banner Image -->
+     <div class="slider_area mt-1">
+    <div class="slider_area_inner d-flex justify-content-center align-items-center">
+        <!-- Top banner image displayed at actual size -->
+        <img src="img/banner/HomePic.png" alt="Top Banner"
+             style="max-width:100%; height:auto; display:block;">
     </div>
+    </div>
+  
 
-    <!-- NAME (ONE LINE, CENTERED) -->
+    <!-- Attorney Info -->
     <h3 class="font-weight-bold mb-3" style="color:#000;">
       Vicente Tanierla Cuison
     </h3>
 
-    <!-- DETAILS (CENTERED TEXT) -->
     <p class="mb-1">
       901 Sunrise Avenue, Suite A-15<br>
       Roseville, CA 95661
@@ -130,16 +139,65 @@
       <a href="tel:9164741549" class="text-dark">916-474-1549</a>
     </p>
 
-    <p class="mb-0">
+    <p class="mb-4">
       <a href="mailto:contact@vtcuisonlaw.com" class="text-dark">
         contact@vtcuisonlaw.com
       </a>
     </p>
 
   </div>
+
+  <!-- IMAGE SLIDER -->
+  <!-- IMAGE SLIDER (actual image size, no crop) -->
+<div style="max-width:900px; margin:auto; margin-bottom:40px; position:relative;">
+  <div id="gallery-slider" style="position:relative; width:100%; overflow:hidden; border-radius:8px; text-align:center;">
+    <img id="slider-image" src="img/gallery/image1.jpg" alt="Gallery Image"
+         style="max-width:100%; max-height:400px; height:auto; display:inline-block; transition:opacity 0.5s;">
+    <!-- Arrows -->
+    <div id="prev-arrow" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); font-size:30px; color:white; cursor:pointer; user-select:none; z-index:10;">&#10094;</div>
+    <div id="next-arrow" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); font-size:30px; color:white; cursor:pointer; user-select:none; z-index:10;">&#10095;</div>
+    <!-- Dots -->
+    <div id="dots-container" style="position:absolute; bottom:10px; width:100%; text-align:center;"></div>
+  </div>
 </div>
 
+  <!-- WELCOME MESSAGE -->
+  <div style="max-width:900px; margin:auto; text-align:justify; line-height:1.7; margin-top:20px;">
+
+    <p><strong>Welcome to my Immigration law office!</strong> I have been helping individuals, families, and business organizations obtain family and employment-based permanent resident status, working and other non-immigrant visas, certificate of naturalization and citizenship, and other immigration related benefits. For 19 years now, I have been successful in obtaining immigration benefits in favor of individuals from various countries, including those from Afghanistan, Bolivia, Brazil, Canada, China, Colombia, Costa Rica, Germany, Guatemala, Hungary, India, Korea, Laos, Liberia, Mexico, Nepal, the Netherlands, Pakistan, Philippines, Romania, Rusia, Saudi Arabia, Scotland, Singapore, Spain, Thailand, Turkey, the United Kingdom, and Vietnam.</p>
+
+    <p>Like millions of Americans, I am also an immigrant. Thus, I know the expectations of an intending immigrant because I experienced the same excitement, difficulties, and sometimes feelings of uncertainty and insecurity that he/she might be facing now.</p>
+
+    <p>I promise to provide my clients with the legal knowledge, skills, preparation, care, diligence, and ethical principles required of me as an immigration attorney.</p>
+
+    <p><em>“In God We Trust.”</em> With God's guidance, when we join our efforts, we can achieve the best possible immigration result/s within the moral and legal bounds. At the end of the day, you can live and/or work in the USA, whose principal motto is <em>“E Pluribus Unum”</em> (through diversity, there is unity).</p>
+
+    <p>So, let us get the job done to fulfill your <em>“American Dream.”</em></p>
+
+    <p>May God bless us all and may God always bless America.</p>
+
+  </div>
+
+  <!-- SIGNATURE -->
+  <div style="max-width:900px; margin:auto; margin-top:60px; text-align:right;">
+    <div style="display:inline-block; text-align:center;">
+      <div style="
+        font-family: 'Brush Script MT','Segoe Script','Lucida Handwriting',cursive;
+        font-size:36px;
+        font-weight:500;
+        letter-spacing:1px;
+      ">
+        Vicente Tanierla Cuison, Esq.
+      </div>
+      <div style="margin-top:5px; font-weight:600;">
+        USA Immigration Attorney
+      </div>
+    </div>
+  </div>
+
+</div>
 <!-- slider_area_end -->
+
 
 <br>
 <br>
@@ -287,6 +345,66 @@
     <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
+
+    <!-- JS Slider with Arrows and Dots -->
+      <script>
+        const galleryImages = [
+          'img/gallery/Picture1.png',
+          'img/gallery/Picture2.png',
+          
+          // Add all your image filenames here
+        ];
+
+        let currentIndex = 0;
+        const sliderImg = document.getElementById('slider-image');
+        const dotsContainer = document.getElementById('dots-container');
+
+        // Create dots
+        galleryImages.forEach((_, index) => {
+          const dot = document.createElement('span');
+          dot.style.height = '12px';
+          dot.style.width = '12px';
+          dot.style.margin = '0 5px';
+          dot.style.backgroundColor = 'rgba(255,255,255,0.5)';
+          dot.style.borderRadius = '50%';
+          dot.style.display = 'inline-block';
+          dot.style.cursor = 'pointer';
+          dot.addEventListener('click', () => showImage(index));
+          dotsContainer.appendChild(dot);
+        });
+
+        const dots = Array.from(dotsContainer.children);
+
+        function updateDots() {
+          dots.forEach((dot, i) => dot.style.backgroundColor = i === currentIndex ? 'white' : 'rgba(255,255,255,0.5)');
+        }
+
+        function showImage(index) {
+          currentIndex = index;
+          sliderImg.style.opacity = 0;
+          setTimeout(() => {
+            sliderImg.src = galleryImages[currentIndex];
+            sliderImg.style.opacity = 1;
+          }, 300);
+          updateDots();
+        }
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+          showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+          showImage((currentIndex + 1) % galleryImages.length);
+        });
+
+        // Auto-slide every 3s
+        setInterval(() => {
+          showImage((currentIndex + 1) % galleryImages.length);
+        }, 3000);
+
+        // Initialize
+        showImage(0);
+      </script>
 
     <script>
             $('#datepicker').datepicker({
