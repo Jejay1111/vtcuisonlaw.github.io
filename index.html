@@ -70,8 +70,8 @@
             <div class="social_media_links">
               <ul>
                 <li><a href="https://www.facebook.com/vicente.cuison"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <!--    <li><a href="#"><i class="fa fa-twitter"></i></a></li>  -->
+                <li><a href="https://www.instagram.com/p/DUd8Jm-gTHl/?utm_source=ig_web_copy_link"><i class="fa fa-instagram"></i></a></li>
               </ul>
             </div>
           </div>
@@ -150,15 +150,21 @@
 <br>
   <!-- IMAGE SLIDER -->
   <!-- IMAGE SLIDER (actual image size, no crop) -->
-<div style="max-width:900px; margin:auto; margin-bottom:40px; position:relative;">
-  <div id="gallery-slider" style="position:relative; width:100%; overflow:hidden; border-radius:8px; text-align:center;">
-    <img id="slider-image" src="img/gallery/image1.jpg" alt="Gallery Image"
-         style="max-width:100%; max-height:400px; height:auto; display:inline-block; transition:opacity 0.5s;">
+<div class="gallery-wrapper">
+  <div id="gallery-slider" class="gallery-frame">
+
+    <img id="slider-image"
+         src="img/gallery/image1.jpg"
+         alt="Gallery Image"
+         class="gallery-image">
+
     <!-- Arrows -->
-    <div id="prev-arrow" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); font-size:30px; color:white; cursor:pointer; user-select:none; z-index:10;">&#10094;</div>
-    <div id="next-arrow" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); font-size:30px; color:white; cursor:pointer; user-select:none; z-index:10;">&#10095;</div>
+    <div id="prev-arrow" class="gallery-arrow left">&#10094;</div>
+    <div id="next-arrow" class="gallery-arrow right">&#10095;</div>
+
     <!-- Dots -->
-    <div id="dots-container" style="position:absolute; bottom:10px; width:100%; text-align:center;"></div>
+    <div id="dots-container" class="gallery-dots"></div>
+
   </div>
 </div>
 
@@ -228,6 +234,22 @@
         </a>
 
       </div>
+      <!-- IMAGE CAROUSEL MODAL -->
+        <div id="awardModal" class="award-modal">
+          <span class="award-close">&times;</span>
+
+          <div class="award-carousel">
+            <span class="award-nav prev">&#10094;</span>
+
+            <div class="award-track">
+              <img src="img/award1.jpg" class="award-slide">
+              <img src="img/award2.jpg" class="award-slide">
+              <img src="img/award3.jpg" class="award-slide">
+            </div>
+
+            <span class="award-nav next">&#10095;</span>
+          </div>
+        </div>
 </div>
 <!-- slider_area_end -->
 
@@ -286,8 +308,8 @@
             <div class="socail_links">
               <ul>
                 <li><a href="https://www.facebook.com/vicente.cuison"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+               <!--    <li><a href="#"><i class="fa fa-twitter"></i></a></li>  -->
+                <li><a href="https://www.instagram.com/p/DUd8Jm-gTHl/?utm_source=ig_web_copy_link"><i class="fa fa-instagram"></i></a></li>
               </ul>
             </div>
           </div>
@@ -457,6 +479,30 @@
             var timepicker = $('#timepicker').timepicker({
              format: 'HH.MM'
          });
+        </script>
+
+        <script>
+            const modal = document.getElementById("awardModal");
+            const track = modal.querySelector(".award-track");
+
+            document.querySelectorAll(".award-hover img").forEach((img, index) => {
+              img.addEventListener("click", () => {
+                modal.style.display = "flex";
+                track.scrollLeft = index * 300;
+              });
+            });
+
+            document.querySelector(".award-close").onclick = () => {
+              modal.style.display = "none";
+            };
+
+            document.querySelector(".award-nav.next").onclick = () => {
+              track.scrollBy({ left: 300, behavior: "smooth" });
+            };
+
+            document.querySelector(".award-nav.prev").onclick = () => {
+              track.scrollBy({ left: -300, behavior: "smooth" });
+            };
         </script>
 </body>
 
