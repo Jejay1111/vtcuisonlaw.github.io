@@ -5613,4 +5613,127 @@ h6 {
 .award-hover:hover {
   transform: scale(0.92);
 }
+/* Gallery Wrapper */
+.gallery-wrapper {
+  max-width: 900px;
+  margin: auto;
+  margin-bottom: 40px;
+  position: relative;
+}
 
+/* Main Black Frame */
+.gallery-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+
+  border: 2px solid #000;              /* elegant black border */
+  border-radius: 8px;
+  padding: 6px;
+  background: #f9f9f9;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+/* Image Styling */
+.gallery-image {
+  max-width: 100%;
+  max-height: 400px;
+  height: auto;
+  display: inline-block;
+
+  border-radius: 4px;
+  transition: opacity 0.5s ease;
+}
+
+/* Navigation Arrows */
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  z-index: 10;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
+
+.gallery-arrow.left {
+  left: 14px;
+}
+
+.gallery-arrow.right {
+  right: 14px;
+}
+
+/* Dots Container */
+.gallery-dots {
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+  text-align: center;
+}
+/* MODAL BACKDROP */
+.award-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CAROUSEL CONTAINER */
+.award-carousel {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+  background: #111;
+  border: 2px solid #000;
+  padding: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* TRACK */
+.award-track {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+/* IMAGES */
+.award-slide {
+  max-height: 420px;
+  border: 1px solid #444;
+  background: #fff;
+  padding: 10px;
+}
+
+/* ARROWS */
+.award-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 34px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.award-nav.prev { left: 10px; }
+.award-nav.next { right: 10px; }
+
+/* CLOSE BUTTON */
+.award-close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}
