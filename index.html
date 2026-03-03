@@ -142,7 +142,13 @@
     <p class="mb-4">
       <a href="mailto:contact@vtcuisonlaw.com" class="text-dark">
         contact@vtcuisonlaw.com
-      </a>
+      </a><br>
+      <a  href="mailto:vtcimmigration@gmail.com">
+                vtcimmigration@gmail.com
+        </a><br>
+        <a  href="mailto:vtclawoffice@yahoo.com">
+                vtclawoffice@yahoo.com
+        </a>
     </p>
 
   </div>
@@ -171,7 +177,7 @@
   <!-- WELCOME MESSAGE -->
   <div style="max-width:900px; margin:auto; text-align:justify; line-height:1.7; margin-top:20px;">
 
-    <p><strong>Welcome to my Immigration law office!</strong> I have been helping individuals, families, and business organizations obtain family and employment-based permanent resident status, working and other non-immigrant visas, certificate of naturalization and citizenship, and other immigration related benefits. For 19 years now, I have been successful in obtaining immigration benefits in favor of individuals from various countries, including those from Afghanistan, Bolivia, Brazil, Canada, China, Colombia, Costa Rica, Germany, Guatemala, Hungary, India, Korea, Laos, Liberia, Mexico, Nepal, the Netherlands, Pakistan, Philippines, Romania, Rusia, Saudi Arabia, Scotland, Singapore, Spain, Thailand, Turkey, the United Kingdom, and Vietnam.</p>
+    <p><strong>Welcome to my Immigration law office!</strong> I have been helping individuals, families, and business organizations obtain family and employment-based permanent resident status, working and other non-immigrant visas, certificate of naturalization and citizenship, and other immigration related benefits. For <span id="yearsExperience"></span> years now, I have been successful in obtaining immigration benefits in favor of individuals from various countries, including those from Afghanistan, Bolivia, Brazil, Canada, China, Colombia, Costa Rica, Germany, Guatemala, Hungary, India, Korea, Laos, Liberia, Mexico, Nepal, the Netherlands, Pakistan, Philippines, Romania, Rusia, Saudi Arabia, Scotland, Singapore, Spain, Thailand, Turkey, the United Kingdom, and Vietnam.</p>
 
     <p>Like millions of Americans, I am also an immigrant. Thus, I know the expectations of an intending immigrant because I experienced the same excitement, difficulties, and sometimes feelings of uncertainty and insecurity that he/she might be facing now.</p>
 
@@ -186,17 +192,12 @@
   </div>
 
   <!-- SIGNATURE -->
-  <div style="max-width:900px; margin:auto; margin-top:60px; text-align:right;">
-    <div style="display:inline-block; text-align:center;">
-      <div style="
-        font-family: 'Brush Script MT','Segoe Script','Lucida Handwriting',cursive;
-        font-size:36px;
-        font-weight:500;
-        letter-spacing:1px;
-      ">
+  <div class="signature-wrapper">
+    <div class="signature-box">
+      <div class="signature-name">
         Vicente Tanierla Cuison, Esq.
       </div>
-      <div style="margin-top:5px; font-weight:600;">
+      <div class="signature-title">
         USA Immigration Attorney
       </div>
     </div>
@@ -302,6 +303,14 @@
               <a href="tel:9164741549" class="domain">916-474-1549</a><br>
               <a class="domain" href="mailto:contact@vtcuisonlaw.com">
                 contact@vtcuisonlaw.com
+              </a><br>
+
+              <a class="domain" href="mailto:vtcimmigration@gmail.com">
+                vtcimmigration@gmail.com
+              </a><br>
+
+              <a class="domain" href="mailto:vtclawoffice@yahoo.com">
+                vtclawoffice@yahoo.com
               </a>
             </p>
 
@@ -503,6 +512,25 @@
             document.querySelector(".award-nav.prev").onclick = () => {
               track.scrollBy({ left: -300, behavior: "smooth" });
             };
+        </script>
+        <script>
+          function calculateExperience() {
+            const startDate = new Date(2007, 9, 17); // October is month 9 (0-based index)
+            const today = new Date();
+
+            let years = today.getFullYear() - startDate.getFullYear();
+
+            // Check if October 17 has passed this year
+            const anniversaryThisYear = new Date(today.getFullYear(), 9, 17);
+
+            if (today < anniversaryThisYear) {
+              years--;
+            }
+
+            document.getElementById("yearsExperience").textContent = years;
+          }
+
+          calculateExperience();
         </script>
 </body>
 
