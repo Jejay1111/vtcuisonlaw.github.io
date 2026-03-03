@@ -5737,3 +5737,90 @@ h6 {
   color: #fff;
   cursor: pointer;
 }
+/* SIGNATURE WRAPPER */
+.signature-wrapper {
+  max-width: 900px;
+  margin: 60px auto 0;
+  text-align: right;
+  padding: 0 15px;
+}
+
+/* SIGNATURE BOX */
+.signature-box {
+  display: inline-block;
+  text-align: center;
+}
+
+/* NAME */
+.signature-name {
+  font-family: 'Brush Script MT','Segoe Script','Lucida Handwriting',cursive;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* TITLE */
+.signature-title {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+/* MOBILE ADJUSTMENT */
+@media (max-width: 767px) {
+
+  .signature-wrapper {
+    margin-top: 40px;
+  }
+
+  .signature-name {
+    font-size: 22px;   /* smaller for mobile */
+  }
+
+  .signature-title {
+    font-size: 14px;   /* smaller subtitle */
+  }
+
+}
+
+/* MOTTO SECTION */
+.motto-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* MAIN MOTTO */
+.motto-primary {
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #ffffff;   /* WHITE */
+}
+
+/* Divider line */
+.motto-divider {
+  width: 90px;
+  height: 3px;
+  background-color: #ffffff;  /* WHITE */
+  margin: 20px auto;
+}
+
+/* Secondary motto */
+.motto-secondary {
+  font-size: 20px;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: #ffffff;   /* WHITE */
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+
+  .motto-primary {
+    font-size: 26px;
+  }
+
+  .motto-secondary {
+    font-size: 16px;
+  }
+
+}
