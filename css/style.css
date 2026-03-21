@@ -1080,7 +1080,7 @@ h3 {
 
 /* line 4, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_slider.scss */
 .slider_bg_2 {
-  background-image: url(../img/banner/Blue_Suit_Wide.png);
+  background-image: url(../img/banner/Attorney_PP.png);
 }
 .slider_bg_3 {
   background-image: url(../img/banner/HomePic.png);
@@ -5429,7 +5429,102 @@ h6 {
 
 /*# sourceMappingURL=style.css.map */
 
+.slider_area_inner100 {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
 
+.slider-img100 {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Wrapper */
+.photo-carousel-wrapper{
+  position:relative;
+  width:80%;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Track wrapper */
+.photo-carousel-track-wrapper{
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+}
+
+/* Carousel track */
+.photo-carousel-track{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  transition:0.5s;
+}
+
+.photo-carousel-track img{
+  width:200px;
+  height:auto;
+  transition:0.3s;
+  border-radius:6px;
+  cursor:pointer;
+  flex-shrink:0;
+}
+
+.photo-carousel-track img.center{
+  width:260px;
+}
+
+/* Buttons outside */
+.photo-carousel-btn{
+  font-size:40px;
+  cursor:pointer;
+  user-select:none;
+  padding:10px;
+  z-index:10;
+  color:#333;
+  background:rgba(255,255,255,0.5);
+  border-radius:50%;
+  margin:0 10px;
+}
+
+
+/* Modal */
+.photo-carousel-modal{
+  display:none;
+  position:fixed;
+  z-index:9999;
+  left:0; top:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+}
+
+.photo-carousel-content{
+  max-width:90%;
+  max-height:90%;
+  border-radius:8px;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+.photo-carousel-close{
+  position:absolute;
+  top:20px;
+  right:40px;
+  font-size:50px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  user-select:none;
+}
 .attorney_profile {
   background-color: #f9f9f9;
   color: #222;
@@ -5823,4 +5918,50 @@ h6 {
     font-size: 16px;
   }
 
+}
+
+.useful-links{
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.useful-links-title{
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.useful-links-title:hover{
+    text-decoration: underline;
+}
+
+.useful-links-list{
+    text-align: left;
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.useful-links-list li{
+    margin-bottom: 8px;
+}
+
+.useful-links-list a{
+    color: blue;
+    text-decoration: none;
+}
+
+.useful-links-list a:hover{
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width:600px){
+    .useful-links-list{
+        display:block;
+    }
 }
