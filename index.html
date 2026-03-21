@@ -60,6 +60,7 @@
                   <li><a href="about.html">Attorney's Profile</a></li>
                   <li><a href="legal.html">Legal Services</a></li>
                   <li><a href="contact.html">Contact</a></li>
+                  <li><a href="links.html">Useful Links</a></li>
                 </ul>
               </nav>
             </div>
@@ -235,22 +236,30 @@
         </a>
 
       </div>
+
+<br>
+<br>
+<br>
+<br>
       <!-- IMAGE CAROUSEL MODAL -->
-        <div id="awardModal" class="award-modal">
-          <span class="award-close">&times;</span>
+             <div class="photo-carousel-wrapper">
+    <span class="photo-carousel-btn photo-carousel-prev">&#10094;</span>
 
-          <div class="award-carousel">
-            <span class="award-nav prev">&#10094;</span>
+    <div class="photo-carousel-track-wrapper">
+        <div class="photo-carousel-track" id="photoCarousel"></div>
+    </div>
 
-            <div class="award-track">
-              <img src="img/award1.jpg" class="award-slide">
-              <img src="img/award2.jpg" class="award-slide">
-              <img src="img/award3.jpg" class="award-slide">
-            </div>
+    <span class="photo-carousel-btn photo-carousel-next">&#10095;</span>
+</div>
 
-            <span class="award-nav next">&#10095;</span>
-          </div>
-        </div>
+<!-- Dots -->
+<div id="photoDotsContainer" class="photo-carousel-dots"></div>
+
+<!-- Modal -->
+<div id="photoModal" class="photo-carousel-modal">
+    <span class="photo-carousel-close">&times;</span>
+    <img id="photoDisplay" class="photo-carousel-content">
+</div>
 </div>
 <!-- slider_area_end -->
 
@@ -348,12 +357,13 @@
         <!-- USEFUL LINKS -->
         <div class="col-xl-2 col-md-6 col-lg-2">
           <div class="footer_widget">
-            <h3 class="footer_title">Useful Links</h3>
+            <h3 class="footer_title">Navigations</h3>
             <ul>
               <li><a href="index.html">Home</a></li>
               <li><a href="about.html">Attorney's Profile</a></li>
               <li><a href="legal.html">Legal Services</a></li>
               <li><a href="contact.html">Contact</a></li>
+              <li><a href="links.html">Useful Links</a></li>
             </ul>
           </div>
         </div>
@@ -490,29 +500,115 @@
          });
         </script>
 
-        <script>
-            const modal = document.getElementById("awardModal");
-            const track = modal.querySelector(".award-track");
+      <script>
+                const folder = "img/firstset/";
+                
 
-            document.querySelectorAll(".award-hover img").forEach((img, index) => {
-              img.addEventListener("click", () => {
-                modal.style.display = "flex";
-                track.scrollLeft = index * 300;
-              });
+            const imagess = [
+              "IBP_CA_Members.png",
+              "IBP_Family Photo_2 _2021.png",
+              "IBP_Members_Photo_2021.png",
+              "IBP_With_3_Other_Members_Fumar_2023.png",
+              "IBP_With_Att. Fumar _2023.png",
+              "IBP_With_Other_Officers_2025.png",
+              "Immigration_Law_Books.png",
+              "My_picture _at_USCIS.png",
+              "NY_Oath_Taking_with_family.png",
+              "/secondset/Oath_Taking_of_Client_AEB.png",
+              "/secondset/Office_picture_3.a.png",
+              "/secondset/Office_picture_4.a.png",
+              "/secondset/Office_picture_with_Nino_Evangeline.png",
+              "/secondset/Vince_Nonoy_bacame_a_US_Citizen.png",
+              "/secondset/Window_sign.png",
+              "/secondset/With_Fr._Arlon_Fannie.png",
+              "/secondset/With_Fr._Arlon_Fr._Boby.png",
+              "/secondset/With_Fr._Boby_Nila_and_Mommy.png",
+              "/secondset/With_Mama_Ate.png",
+              "/thirdset/With_Mommy_IBP_CA.png",
+              "/thirdset/With_PH_Embassy_in_Rome_Staff.png",
+              "/thirdset/With_Rose_M_A_M_face_not_shown_jfif.png",
+              "/thirdset/With_Rose_M_A_M_jfif.png",
+              "/thirdset/With_Roxas_Padilla_Family.png",
+              "/thirdset/With_Sylvia_Guevarra.png"         
+            ];
+
+            const carousel = document.getElementById("photoCarousel");
+            const photoDotsContainer = document.getElementById("photoDotsContainer"); // renamed
+            let currentPhotoIndex = 0;
+
+            // Render carousel
+            function renderCarousel() {
+              carousel.innerHTML = "";
+              for(let i=-1;i<=1;i++){
+                let index = (currentPhotoIndex + i + imagess.length) % imagess.length;
+                const img = document.createElement("img");
+                img.src = folder + imagess[index];
+                if(i===0) img.classList.add("center");
+                img.addEventListener("click", ()=>openModal(img.src));
+                carousel.appendChild(img);
+              }
+              renderDots();
+            }
+
+            // Render dots
+            function renderDots(){
+              photoDotsContainer.innerHTML = "";
+              for(let i=0;i<imagess.length;i++){
+                const dot = document.createElement("span");
+                if(i === currentPhotoIndex) dot.classList.add("active");
+                dot.addEventListener("click", () => {
+                  currentPhotoIndex = i;
+                  renderCarousel();
+                });
+                photoDotsContainer.appendChild(dot);
+              }
+            }
+
+            // Next / Prev
+            document.querySelector(".photo-carousel-next").onclick = () => {
+              currentPhotoIndex = (currentPhotoIndex + 1) % imagess.length;
+              renderCarousel();
+            };
+            document.querySelector(".photo-carousel-prev").onclick = () => {
+              currentPhotoIndex = (currentPhotoIndex - 1 + imagess.length) % imagess.length;
+              renderCarousel();
+            };
+
+            // Mouse drag
+            let isDragging = false;
+            let startX = 0;
+            carousel.addEventListener("mousedown", e => { isDragging=true; startX=e.pageX; });
+            carousel.addEventListener("mousemove", e => {
+              if(!isDragging) return;
+              let diff = e.pageX - startX;
+              if(diff>50){ currentPhotoIndex = (currentPhotoIndex - 1 + imagess.length) % imagess.length; renderCarousel(); isDragging=false; }
+              if(diff<-50){ currentPhotoIndex = (currentPhotoIndex + 1) % imagess.length; renderCarousel(); isDragging=false; }
+            });
+            carousel.addEventListener("mouseup", () => isDragging=false);
+            carousel.addEventListener("mouseleave", () => isDragging=false);
+
+            // Touch swipe
+            carousel.addEventListener("touchstart", e => { startX=e.touches[0].clientX; });
+            carousel.addEventListener("touchmove", e => {
+              let diff = e.touches[0].clientX - startX;
+              if(diff>50){ currentPhotoIndex = (currentPhotoIndex - 1 + imagess.length) % imagess.length; renderCarousel(); startX=e.touches[0].clientX; }
+              if(diff<-50){ currentPhotoIndex = (currentPhotoIndex + 1) % imagess.length; renderCarousel(); startX=e.touches[0].clientX; }
             });
 
-            document.querySelector(".award-close").onclick = () => {
-              modal.style.display = "none";
-            };
+            // Modal
+            const modal = document.getElementById("photoModal");
+            const modalImg = document.getElementById("photoDisplay");
+            const closeBtn = document.querySelector(".photo-carousel-close");
 
-            document.querySelector(".award-nav.next").onclick = () => {
-              track.scrollBy({ left: 300, behavior: "smooth" });
-            };
+            function openModal(src){
+              modal.style.display="flex";
+              modalImg.src = src;
+            }
+            closeBtn.onclick = () => { modal.style.display="none"; }
 
-            document.querySelector(".award-nav.prev").onclick = () => {
-              track.scrollBy({ left: -300, behavior: "smooth" });
-            };
-        </script>
+            // Initialize
+            renderCarousel();
+              </script>
         <script>
           function calculateExperience() {
             const startDate = new Date(2007, 9, 17); // October is month 9 (0-based index)
