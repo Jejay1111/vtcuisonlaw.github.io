@@ -155,25 +155,30 @@
   </div>
 <br>
 <br>
-  <!-- IMAGE SLIDER -->
-  <!-- IMAGE SLIDER (actual image size, no crop) -->
-<div class="gallery-wrapper">
-  <div id="gallery-slider" class="gallery-frame">
+          <!-- IMAGE SLIDER -->
+        <div class="gallery-wrapper">
+          <div class="gallery-frame">
 
-    <img id="slider-image"
-         src="img/gallery/image1.jpg"
-         alt="Gallery Image"
-         class="gallery-image">
+            <img id="slider-image"
+                src=""
+                class="gallery-image"
+                alt="Gallery Image">
 
-    <!-- Arrows -->
-    <div id="prev-arrow" class="gallery-arrow left">&#10094;</div>
-    <div id="next-arrow" class="gallery-arrow right">&#10095;</div>
+            <div id="prev-arrow" class="gallery-arrow left">&#10094;</div>
+            <div id="next-arrow" class="gallery-arrow right">&#10095;</div>
 
-    <!-- Dots -->
-    <div id="dots-container" class="gallery-dots"></div>
+            <div id="dots-container" class="gallery-dots"></div>
 
-  </div>
-</div>
+          </div>
+        </div>
+
+        <!-- FULLSCREEN -->
+        <div id="gsFullscreenWrap" class="gs-fullscreen-wrap">
+          <span id="gsCloseBtn" class="gs-close-btn">&times;</span>
+          <span id="gsPrevBtn" class="gs-nav-arrow gs-nav-left">&#10094;</span>
+          <img id="gsFullscreenImg" class="gs-fullscreen-img" src="">
+          <span id="gsNextBtn" class="gs-nav-arrow gs-nav-right">&#10095;</span>
+        </div>
 
   <!-- WELCOME MESSAGE -->
   <div style="max-width:900px; margin:auto; text-align:justify; line-height:1.7; margin-top:20px;">
@@ -242,6 +247,7 @@
 <br>
 <br>
       <!-- IMAGE CAROUSEL MODAL -->
+         <!--
              <div class="photo-carousel-wrapper">
     <span class="photo-carousel-btn photo-carousel-prev">&#10094;</span>
 
@@ -252,15 +258,16 @@
     <span class="photo-carousel-btn photo-carousel-next">&#10095;</span>
 </div>
 
-<!-- Dots -->
+
 <div id="photoDotsContainer" class="photo-carousel-dots"></div>
 
-<!-- Modal -->
+
 <div id="photoModal" class="photo-carousel-modal">
     <span class="photo-carousel-close">&times;</span>
     <img id="photoDisplay" class="photo-carousel-content">
+</div>-->
 </div>
-</div>
+
 <!-- slider_area_end -->
 
 
@@ -421,65 +428,143 @@
     <script src="js/main.js"></script>
 
     <!-- JS Slider with Arrows and Dots -->
-      <script>
-        const galleryImages = [
-          'img/gallery/Picture1.png',
-          'img/gallery/Picture2.png',
-          
-          // Add all your image filenames here
-        ];
+      <script id="gallery-js-fix">
+        document.addEventListener("DOMContentLoaded", function () {
 
-        let currentIndex = 0;
-        const sliderImg = document.getElementById('slider-image');
-        const dotsContainer = document.getElementById('dots-container');
+          const galleryImages = [
+            'img/gallery/Picture1.png',
+            'img/gallery/Picture2.png',
+            'img/firstset/IBP_CA_Members.png',
+            'img/firstset/IBP_Family Photo_2 _2021.png',
+            'img/firstset/IBP_Members_Photo_2021.png',
+            'img/firstset/IBP_With_3_Other_Members_Fumar_2023.png',
+            'img/firstset/IBP_With_Att. Fumar _2023.png',
+            'img/firstset/IBP_With_Other_Officers_2025.png',
+            'img/firstset/Immigration_Law_Books.png',
+            'img/firstset/My_picture _at_USCIS.png',
+            'img/firstset/NY_Oath_Taking_with_family.png',
 
-        // Create dots
-        galleryImages.forEach((_, index) => {
-          const dot = document.createElement('span');
-          dot.style.height = '12px';
-          dot.style.width = '12px';
-          dot.style.margin = '0 5px';
-          dot.style.backgroundColor = 'rgba(255,255,255,0.5)';
-          dot.style.borderRadius = '50%';
-          dot.style.display = 'inline-block';
-          dot.style.cursor = 'pointer';
-          dot.addEventListener('click', () => showImage(index));
-          dotsContainer.appendChild(dot);
+            'img/firstset/secondset/Oath_Taking_of_Client_AEB.png',
+            'img/firstset/secondset/Office_picture_3.a.png',
+            'img/firstset/secondset/Office_picture_4.a.png',
+            'img/firstset/secondset/Office_picture_with_Nino_Evangeline.png',
+            'img/firstset/secondset/Vince_Nonoy_bacame_a_US_Citizen.png',
+            'img/firstset/secondset/Window_sign.png',
+            'img/firstset/secondset/With_Fr._Arlon_Fannie.png',
+            'img/firstset/secondset/With_Fr._Arlon_Fr._Boby.png',
+            'img/firstset/secondset/With_Fr._Boby_Nila_and_Mommy.png',
+            'img/firstset/secondset/With_Mama_Ate.png',
+
+            'img/firstset/thirdset/With_Mommy_IBP_CA.png',
+            'img/firstset/thirdset/With_PH_Embassy_in_Rome_Staff.png',
+            'img/firstset/thirdset/With_Rose_M_A_M_face_not_shown_jfif.png',
+            'img/firstset/thirdset/With_Rose_M_A_M_jfif.png',
+            'img/firstset/thirdset/With_Roxas_Padilla_Family.png',
+            'img/firstset/thirdset/With_Sylvia_Guevarra.png'
+          ];
+
+          let currentIndex = 0;
+
+          const sliderImg = document.getElementById('slider-image');
+          const dotsContainer = document.getElementById('dots-container');
+          const prevBtn = document.getElementById('prev-arrow');
+          const nextBtn = document.getElementById('next-arrow');
+
+          const gsWrap = document.getElementById('gsFullscreenWrap');
+          const gsImg = document.getElementById('gsFullscreenImg');
+
+          // CREATE DOTS
+          galleryImages.forEach((_, index) => {
+            const dot = document.createElement('span');
+            dot.style.cssText = `
+              height:12px;width:12px;margin:0 5px;
+              background:rgba(255,255,255,0.5);
+              border-radius:50%;display:inline-block;cursor:pointer;
+            `;
+            dot.addEventListener('click', () => showImage(index));
+            dotsContainer.appendChild(dot);
+          });
+
+          const dots = Array.from(dotsContainer.children);
+
+          function updateDots() {
+            dots.forEach((dot, i) => {
+              dot.style.background = i === currentIndex ? 'white' : 'rgba(255,255,255,0.5)';
+            });
+          }
+
+          function showImage(index) {
+            currentIndex = index;
+            sliderImg.style.opacity = 0;
+
+            setTimeout(() => {
+              sliderImg.src = galleryImages[currentIndex];
+              sliderImg.style.opacity = 1;
+            }, 200);
+
+            updateDots();
+          }
+
+          // ARROWS
+          prevBtn.addEventListener('click', () => {
+            showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
+          });
+
+          nextBtn.addEventListener('click', () => {
+            showImage((currentIndex + 1) % galleryImages.length);
+          });
+
+          // AUTO SLIDE
+          setInterval(() => {
+            showImage((currentIndex + 1) % galleryImages.length);
+          }, 8000);
+
+          // INIT
+          showImage(0);
+
+          // FULLSCREEN OPEN
+          sliderImg.addEventListener('click', () => {
+            gsWrap.style.display = 'flex';
+            gsImg.src = galleryImages[currentIndex];
+          });
+
+          // CLOSE
+          document.getElementById('gsCloseBtn').onclick = () => {
+            gsWrap.style.display = 'none';
+          };
+
+          // OUTSIDE CLICK
+          gsWrap.addEventListener('click', (e) => {
+            if (e.target === gsWrap) gsWrap.style.display = 'none';
+          });
+
+          // FULL NAV
+          document.getElementById('gsNextBtn').onclick = () => {
+            currentIndex = (currentIndex + 1) % galleryImages.length;
+            updateFull();
+          };
+
+          document.getElementById('gsPrevBtn').onclick = () => {
+            currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateFull();
+          };
+
+          function updateFull() {
+            gsImg.src = galleryImages[currentIndex];
+            showImage(currentIndex);
+          }
+
+          // KEYBOARD
+          document.addEventListener('keydown', (e) => {
+            if (gsWrap.style.display === 'flex') {
+              if (e.key === 'ArrowRight') updateFull(currentIndex++);
+              if (e.key === 'ArrowLeft') updateFull(currentIndex--);
+              if (e.key === 'Escape') gsWrap.style.display = 'none';
+            }
+          });
+
         });
-
-        const dots = Array.from(dotsContainer.children);
-
-        function updateDots() {
-          dots.forEach((dot, i) => dot.style.backgroundColor = i === currentIndex ? 'white' : 'rgba(255,255,255,0.5)');
-        }
-
-        function showImage(index) {
-          currentIndex = index;
-          sliderImg.style.opacity = 0;
-          setTimeout(() => {
-            sliderImg.src = galleryImages[currentIndex];
-            sliderImg.style.opacity = 1;
-          }, 300);
-          updateDots();
-        }
-
-        document.getElementById('prev-arrow').addEventListener('click', () => {
-          showImage((currentIndex - 1 + galleryImages.length) % galleryImages.length);
-        });
-
-        document.getElementById('next-arrow').addEventListener('click', () => {
-          showImage((currentIndex + 1) % galleryImages.length);
-        });
-
-        // Auto-slide every 3s
-        setInterval(() => {
-          showImage((currentIndex + 1) % galleryImages.length);
-        }, 8000);
-
-        // Initialize
-        showImage(0);
-      </script>
-
+        </script>
     <script>
             $('#datepicker').datepicker({
                 iconsLibrary: 'fontawesome',
