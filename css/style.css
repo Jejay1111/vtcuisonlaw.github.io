@@ -6066,3 +6066,15 @@ h6 {
     }
 }
 
+.custom-name-title {
+  font-size: 3rem;        /* desktop size (like display-4) */
+  color: #000;
+  white-space: nowrap;    /* 🔥 prevents line break */
+}
+
+/* 📱 Mobile fix */
+@media (max-width: 768px) {
+  .custom-name-title {
+    font-size: 7vw;       /* scales based on screen width */
+  }
+}
