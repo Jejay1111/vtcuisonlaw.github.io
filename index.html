@@ -94,10 +94,13 @@
 
 <!-- slider_area_start -->
 <div class="slider_area mt-1">
-    <div class="slider_area_inner d-flex justify-content-center align-items-center">
-        <!-- Top banner image displayed at actual size -->
-        <img src="img/banner/Welcome_To_US.png" alt="Top Banner"
-             style="max-width:100%; height:auto; display:block;">
+    <div class="slider_area_inner custom-banner-area">
+
+        <div class="custom-banner-wrapper">
+            <img src="img/banner/liberty_no_bg.png" alt="Liberty" class="custom-banner-img left">
+            <img src="img/banner/Welcome_To_US_no_bg.png" alt="Welcome" class="custom-banner-img right">
+        </div>
+
     </div>
 </div>
 <!-- slider_area_end -->
@@ -514,7 +517,11 @@
             showImage((currentIndex + 1) % galleryImages.length);
           });
 
-        
+          // AUTO SLIDE
+          setInterval(() => {
+            showImage((currentIndex + 1) % galleryImages.length);
+          }, 8000);
+
           // INIT
           showImage(0);
 
