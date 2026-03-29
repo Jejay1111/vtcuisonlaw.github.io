@@ -1100,15 +1100,73 @@ h3 {
 }
 
 /* line 14, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_slider.scss */
-.slider_area_inner {
+
+/* ===== UNIQUE BANNER STYLE ===== */
+.custom-banner-area {
   height: 800px;
-  position: relative;
-  z-index: 8;
-  position: relative;
-  z-index: 8;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wrapper */
+.custom-banner-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Images */
+.custom-banner-img {
+  display: block;
+  height: auto;
+  max-height: 100%;
+}
+
+/* LEFT (Liberty) */
+.custom-banner-img.left {
+  height: 100%;
+  width: auto;
+  margin-right: -3px; /* seamless connection */
+}
+
+/* RIGHT (Welcome - FULL, NO CROPPING) */
+.custom-banner-img.right {
+  height: auto;
+  max-height: 100%;
+  width: auto;
+}
+
+
+/* ===== MOBILE (KEEP SIDE-BY-SIDE, NO STACK) ===== */
+@media (max-width: 768px) {
+  .custom-banner-area {
+    height: auto; /* allow natural scaling */
+    padding: 5px;
+  }
+
+  .custom-banner-wrapper {
+    flex-direction: row; /* keep side-by-side */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-banner-img {
+    max-height: 100%;
+  }
+
+  /* Scale both images to fit screen */
+  .custom-banner-img.left,
+  .custom-banner-img.right {
+    height: auto;
+    width: auto;
+    max-width: 50%; /* both fit screen */
+  }
+
+  .custom-banner-img.left {
+    margin-right: -2px;
+  }
 }
 
 @media (max-width: 767px) {
