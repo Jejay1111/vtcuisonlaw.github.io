@@ -709,64 +709,33 @@ h3 {
 .slicknav_icon-bar {
   background: #fff !important;
 }
-
-/* =========================
-/* LOGO — ALL SCREEN SIZES */
-.logo-dual {
-  display: inline-flex;
-  align-items: center;
-    gap: 15px;
+.header-area .main-header-area .logo-img img {
+  width: auto !important;
 }
-
-/* IMPORTANT: prevent stretching */
+/* LOGO BASE */
 .nav-logo,
 .vtc-logo {
   width: auto;
-  max-width: 100%;
   object-fit: contain;
 }
 
-/* DESKTOP */
+/* RESPONSIVE CONTROL */
 .nav-logo {
-  height: 40px;
-  margin-right: 20px;
+  height: clamp(30px, 4vw, 50px); /* min, flexible, max */
 }
 
 .vtc-logo {
-  height: 72px;
+  height: clamp(30px, 6vw, 60px);
 }
 
-/* TABLET */
-@media (max-width: 991px) {
-
-  .logo-dual {
-    gap: 6px;
-  }
-  .nav-logo {
-    height: 34px;
-    margin-right: 8px;
-  }
-
-  .vtc-logo {
-    height: 44px;
-  }
+/* OPTIONAL spacing */
+.logo-dual {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(4px, 1.5vw, 15px);
 }
 
-/* MOBILE */
-@media (max-width: 767px) {
 
-  .logo-dual {
-    gap: 1px;
-  }
-  .nav-logo {
-    height: 30px;
-    margin-right: 6px;
-  }
-
-  .vtc-logo {
-    height: 38px;
-  }
-}
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_header.scss */
 .header-area {
   left: 0;
@@ -827,14 +796,14 @@ h3 {
 @media (max-width: 767px) {
   /* line 30, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_header.scss */
   .header-area .main-header-area .logo-img img {
-    width: 120px;
+    width: 80px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   /* line 30, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_header.scss */
   .header-area .main-header-area .logo-img img {
-    width: 120px;
+    width: 80px;
   }
 }
 
@@ -1101,71 +1070,50 @@ h3 {
 
 /* line 14, C:/Users/SPN Graphics/Desktop/CL September/211 Lawyer/HTML/scss/_slider.scss */
 
-/* ===== UNIQUE BANNER STYLE ===== */
+/* ===== BANNER AREA ===== */
 .custom-banner-area {
-  height: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 70vh;            /* controls BOTH images */
+  min-height: 250px;
+  max-height: 700px;
 }
 
 /* Wrapper */
 .custom-banner-wrapper {
   display: flex;
-  align-items: center;
   height: 100%;
   width: 100%;
+  align-items: flex-end;   /* align bottoms like your design */
 }
 
-/* Images */
+/* BOTH IMAGES */
 .custom-banner-img {
+  height: 100%;            /* 🔥 SAME HEIGHT */
+  object-fit: contain;     /* 🔥 NO CROPPING */
   display: block;
-  height: auto;
-  max-height: 100%;
 }
 
-/* LEFT (Liberty) */
+/* LEFT */
 .custom-banner-img.left {
-  height: 100%;
-  width: auto;
-  margin-right: -3px; /* seamless connection */
+  width: 25%;
 }
 
-/* RIGHT (Welcome - FULL, NO CROPPING) */
+/* RIGHT */
 .custom-banner-img.right {
-  height: auto;
-  max-height: 100%;
-  width: auto;
+  width: 75%;
 }
 
+/* ===== TABLET ===== */
+@media (max-width: 1024px) {
+  .custom-banner-area {
+    height: 55vh;
+  }
+}
 
-/* ===== MOBILE (KEEP SIDE-BY-SIDE, NO STACK) ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .custom-banner-area {
-    height: auto; /* allow natural scaling */
-    padding: 5px;
-  }
-
-  .custom-banner-wrapper {
-    flex-direction: row; /* keep side-by-side */
-    justify-content: center;
-    align-items: center;
-  }
-
-  .custom-banner-img {
-    max-height: 100%;
-  }
-
-  /* Scale both images to fit screen */
-  .custom-banner-img.left,
-  .custom-banner-img.right {
-    height: auto;
-    width: auto;
-    max-width: 50%; /* both fit screen */
-  }
-
-  .custom-banner-img.left {
-    margin-right: -2px;
+    height: 40vh;
   }
 }
 
