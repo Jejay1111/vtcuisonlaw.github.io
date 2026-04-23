@@ -1073,34 +1073,49 @@ h3 {
 /* ===== BANNER AREA ===== */
 .custom-banner-area {
   width: 100%;
-  height: 70vh;            /* controls BOTH images */
+  height: 70vh;
   min-height: 250px;
   max-height: 700px;
-}
+  overflow: hidden;
 
-/* Wrapper */
-.custom-banner-wrapper {
   display: flex;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/* SLIDER */
+.custom-banner-slider {
+  position: relative;
   width: 100%;
-  align-items: flex-end;   /* align bottoms like your design */
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* BOTH IMAGES */
-.custom-banner-img {
-  height: 100%;            /* 🔥 SAME HEIGHT */
-  object-fit: contain;     /* 🔥 NO CROPPING */
-  display: block;
+/* SLIDES */
+.banner-slide {
+  position: absolute;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  border: 5px solid black;   /* 🔥 BORDER NOW FITS IMAGE */
+  background: black;         /* optional: fills transparent gaps */
 }
 
-/* LEFT */
-.custom-banner-img.left {
-  width: 25%;
-}
-
-/* RIGHT */
-.custom-banner-img.right {
-  width: 75%;
+/* ACTIVE */
+.banner-slide.active {
+  opacity: 1;
 }
 
 /* ===== TABLET ===== */
@@ -1115,6 +1130,65 @@ h3 {
   .custom-banner-area {
     height: 40vh;
   }
+}
+
+/* LIGHTBOX BACKGROUND */
+.banner-lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding: 20px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.95);
+  justify-content: center;
+  align-items: center;
+}
+
+/* IMAGE FULLSCREEN */
+.lightbox-img {
+  max-width: 95%;
+  max-height: 95%;
+  border: 5px solid #fff;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* SLIDES */
+.banner-slide {
+  position: absolute;
+
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  border: 5px solid black;
+
+  pointer-events: none;   /* ❌ disable clicks by default */
+  z-index: 0;
+}
+
+/* ACTIVE SLIDE */
+.banner-slide.active {
+  opacity: 1;
+  pointer-events: auto;   /* ✅ only active is clickable */
+  z-index: 1;             /* ✅ bring to front */
 }
 
 @media (max-width: 767px) {
@@ -6025,4 +6099,19 @@ h6 {
   .custom-name-title {
     font-size: 7vw;       /* scales based on screen width */
   }
+}
+.map-img {
+  max-width: 180px;   /* 🔥 smaller size */
+  height: auto;
+  display: block;
+  margin: auto;
+ 
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+/* 🔥 HOVER EFFECT */
+.map-hover:hover .map-img {
+  transform: scale(1.08);
+ 
 }
