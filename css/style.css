@@ -6144,3 +6144,24 @@ h6 {
   transform: scale(1.08);
  
 }
+.map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.map-address {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+
+  background: rgba(0,0,0,0.75);
+  color: white;
+
+  padding: 10px 15px;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  z-index: 10;
+}
